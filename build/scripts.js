@@ -45,17 +45,6 @@ function split(str, separator = ' ') {
   return str.split(separator);
 }
 
-function countCharacters(str, charList) {
-  if (!isString(str)) return 0;
-  let count = 0;
-  for (let char of str.toLowerCase()) {
-    if (charList.includes(char)) {
-      count++;
-    }
-  }
-  return count;
-}
-
 //------------------------------------------------------------------------------
 // Grunnföll sem skilgreina á
 
@@ -113,8 +102,15 @@ function vowels(str) {
 
 
 function consonant(str) {
+  if (typeof str !== 'string') return 0;
   const consonantList = 'bdðfghjklmnprstvxþ';
-  return countCharacters(str, consonantList);
+  let count = 0;
+  for (let char of str.toLowerCase()) {
+    if (consonantList.includes(char)) {
+      count++;
+    }
+  }
+  return count;
 }
 
 //------------------------------------------------------------------------------
